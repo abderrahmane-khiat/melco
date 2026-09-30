@@ -1,0 +1,2066 @@
+@prefix : <https://fraunhofer.mitsubishi/melco/TransportInfrastructure#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://fraunhofer.mitsubishi/melco/TransportInfrastructure> .
+
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure> rdf:type owl:Ontology ;
+                                                               <http://purl.org/dc/terms/creator> "Dr. Abderrahmane Khiat, Senior Researcher, Postdoctoral" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/creator
+<http://purl.org/dc/terms/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled
+<http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#mm
+:mm rdf:type rdfs:Datatype ;
+    rdfs:comment "distance in meter" .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#approachTo
+:approachTo rdf:type owl:ObjectProperty ;
+            rdfs:domain :MyAutonomousCar ;
+            rdfs:range :Junction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#behind
+:behind rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf owl:topObjectProperty ;
+        rdfs:domain :Vehicle ;
+        rdfs:range :Obstacle .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#belongTo
+:belongTo rdf:type owl:ObjectProperty ;
+          rdfs:domain :TrafficSignal ;
+          rdfs:range :SignalGroup .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#beside
+:beside rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf owl:topObjectProperty ;
+        rdfs:domain :Vehicle ;
+        rdfs:range :Obstacle .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#collisionWarningWith
+:collisionWarningWith rdf:type owl:ObjectProperty ;
+                      rdfs:domain :MyAutonomousCar ;
+                      rdfs:range :Obstacle .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#consistedOf
+:consistedOf rdf:type owl:ObjectProperty ;
+             rdfs:domain :Lane ,
+                         :Road ;
+             rdfs:range :Waypoint .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#crowsswalkOnLane
+:crowsswalkOnLane rdf:type owl:ObjectProperty ;
+                  rdfs:domain :CrosswalkSegment ,
+                              :ZebraCrossing ;
+                  rdfs:range :Lane .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#currentPath
+:currentPath rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :Vehicle ;
+             rdfs:range <https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Trajectory?> ;
+             rdfs:comment "it describes the path that should be taken by the vehicle" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#endLane
+:endLane rdf:type owl:ObjectProperty ;
+         rdfs:domain :PathDirection ;
+         rdfs:range :Lane .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#fromLinkEnd
+:fromLinkEnd rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :isConnectedTo ;
+             rdfs:comment "is the entry point to the turn" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#giveWay
+:giveWay rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         rdfs:domain :MyAutonomousCar ;
+         rdfs:range :Obstacle .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#goStraightTo
+:goStraightTo rdf:type owl:ObjectProperty ;
+              rdfs:domain :Lane ;
+              rdfs:range :Lane .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasCrossing
+:hasCrossing rdf:type owl:ObjectProperty ;
+             rdfs:domain :CrosswalkSegment ;
+             rdfs:range :ZebraCrossing .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasFrontPosition
+:hasFrontPosition rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Vehicle ;
+                  rdfs:range :FrontPosition .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasIntersection
+:hasIntersection rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :hasJunction ;
+                 rdfs:domain :Road ;
+                 rdfs:range :Intersection .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasJunction
+:hasJunction rdf:type owl:ObjectProperty ;
+             rdfs:domain :Road ;
+             rdfs:range :Junction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasLane
+:hasLane rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         owl:inverseOf :isLaneOf ;
+         rdfs:domain :Road ;
+         rdfs:range :Lane .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasLateralPosition
+:hasLateralPosition rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Position ;
+                    rdfs:range :LateralPosition .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasNode
+:hasNode rdf:type owl:ObjectProperty ;
+         owl:inverseOf :isNodeOf ;
+         rdfs:domain :PathDirection ;
+         rdfs:range :Node .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasObstacle
+:hasObstacle rdf:type owl:ObjectProperty ;
+             rdfs:domain :Position ;
+             rdfs:range :Obstacle .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasPart
+:hasPart rdf:type owl:ObjectProperty ;
+         rdfs:domain :Vehicle ;
+         rdfs:range :VehiclePart ;
+         rdfs:comment "it desribes the vehicle and its parts" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasPathSegment
+:hasPathSegment rdf:type owl:ObjectProperty ;
+                owl:inverseOf :isPathSegmentOf ;
+                rdfs:domain :PathDirection ;
+                rdfs:range :PathSegment .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasPos
+:hasPos rdf:type owl:ObjectProperty ;
+        rdfs:domain :Vehicle ;
+        rdfs:range :Position .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasRearPosition
+:hasRearPosition rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Vehicle ;
+                 rdfs:range :RearPosition .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasRoadSegment
+:hasRoadSegment rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                owl:inverseOf :isRoadSegmentOf ;
+                rdfs:domain :Road ;
+                rdfs:range :RoadSegment .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasRoadType
+:hasRoadType rdf:type owl:ObjectProperty ;
+             rdfs:domain :Road ;
+             rdfs:range :RoadType .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasSpeedLimit
+:hasSpeedLimit rdf:type owl:ObjectProperty ;
+               rdfs:domain [ rdf:type owl:Class ;
+                             owl:unionOf ( :Lane
+                                           :Road
+                                         )
+                           ] ;
+               rdfs:range :SpeedLimit .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasSpeedProfile
+:hasSpeedProfile rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Vehicle ;
+                 rdfs:range :SpeedProfile .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasTurnEntryPoint
+:hasTurnEntryPoint rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :hasTurnPoint ;
+                   rdfs:comment "is the entry point to the turn" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasTurnExitPoint
+:hasTurnExitPoint rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasTurnPoint .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasTurnPoint
+:hasTurnPoint rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain :Turn ;
+              rdfs:range :TurnPoint .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#inFrontOf
+:inFrontOf rdf:type owl:ObjectProperty ;
+           rdfs:domain :Vehicle ;
+           rdfs:range :Obstacle .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#isComposedOfRoad
+:isComposedOfRoad rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdfs:domain :Network ;
+                  rdfs:range :Road .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#isConnectedTo
+:isConnectedTo rdf:type owl:ObjectProperty ,
+                        owl:SymmetricProperty ;
+               rdfs:domain :Junction ;
+               rdfs:range :Road .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#isLaneOf
+:isLaneOf rdf:type owl:ObjectProperty .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#isLocatedOn
+:isLocatedOn rdf:type owl:ObjectProperty ;
+             rdfs:domain :Signal ;
+             rdfs:range :Lane ,
+                        :Road .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#isNodeOf
+:isNodeOf rdf:type owl:ObjectProperty ;
+          rdfs:domain :Node ;
+          rdfs:range :PathDirection .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#isObservedAs
+:isObservedAs rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              rdfs:domain :Road ;
+              rdfs:range :TrafficConflict .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#isOnLane
+:isOnLane rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain :Position ;
+          rdfs:range :Lane .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#isOnRoad
+:isOnRoad rdf:type owl:ObjectProperty ;
+          rdfs:domain :Position ;
+          rdfs:range :Road .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#isOnTurn
+:isOnTurn rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :isOnRoad ;
+          rdfs:domain :Position ;
+          rdfs:range :Turn .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#isPartOf
+:isPartOf rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain :OtherThoroughfare ;
+          rdfs:range :Network .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#isPathSegmentOf
+:isPathSegmentOf rdf:type owl:ObjectProperty .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#isRoadSegmentOf
+:isRoadSegmentOf rdf:type owl:ObjectProperty .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#isRunningOn
+:isRunningOn rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :MyAutonomousCar ;
+             rdfs:range :Path ;
+             rdfs:comment "it describes the path on which the vehicle is running on" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#isSignalStateOf
+:isSignalStateOf rdf:type owl:ObjectProperty ;
+                 rdfs:domain :SignalState ;
+                 rdfs:range :TrafficSignal .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#isToReach
+:isToReach rdf:type owl:ObjectProperty ;
+           rdfs:domain :MyAutonomousCar ;
+           rdfs:range :Stopline .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#leftSideOf
+:leftSideOf rdf:type owl:ObjectProperty ;
+            owl:inverseOf :rightSideOf ;
+            rdfs:domain :Vehicle ;
+            rdfs:range :Obstacle .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#nearTo
+:nearTo rdf:type owl:ObjectProperty ;
+        rdfs:domain :Road ;
+        rdfs:range :ArchitecturalStructure .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#nextLane
+:nextLane rdf:type owl:ObjectProperty ;
+          owl:inverseOf :prevLane ;
+          rdfs:domain :Lane ;
+          rdfs:range :Lane .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#prevLane
+:prevLane rdf:type owl:ObjectProperty .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#prevNode
+:prevNode rdf:type owl:ObjectProperty ;
+          owl:inverseOf <https://fraunhofer.mitsubishi/melco/TransportInfrastructure#nextNode?> .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#rightSideOf
+:rightSideOf rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :Vehicle ;
+             rdfs:range :Obstacle .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#startLane
+:startLane rdf:type owl:ObjectProperty ;
+           rdfs:domain :PathDirection ;
+           rdfs:range :Lane .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#toLinkEnd
+:toLinkEnd rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :isConnectedTo .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#turnLeftTo
+:turnLeftTo rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :nextLane ;
+            rdfs:domain :Lane ;
+            rdfs:range :Lane .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#turnRightTo
+:turnRightTo rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :nextLane ;
+             rdfs:domain :Lane ;
+             rdfs:range :Lane .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#usedSensor
+:usedSensor rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :MyAutonomousCar ;
+            rdfs:range :Sensor ;
+            rdfs:comment "it describes the sensors that have been used in the vehicle" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#vehiclePose
+:vehiclePose rdf:type owl:ObjectProperty ;
+             rdfs:domain :Vehicle ;
+             rdfs:comment "is the relation between the vehicle and its pose in terms of  position and orientation" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#vehicleVelocity
+:vehicleVelocity rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Vehicle ;
+                 rdfs:comment "is the relation between the vehicle and its velocity in terms of  linear and angular" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#enterOf?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#enterOf?> rdf:type owl:ObjectProperty ;
+                                                                       rdfs:subPropertyOf :isNodeOf .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#exitOf?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#exitOf?> rdf:type owl:ObjectProperty ;
+                                                                      rdfs:subPropertyOf :isNodeOf .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#nextNode?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#nextNode?> rdf:type owl:ObjectProperty ;
+                                                                        rdfs:domain :Node ;
+                                                                        rdfs:range :Node .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#nextPathSegment?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#nextPathSegment?> rdf:type owl:ObjectProperty ;
+                                                                               owl:inverseOf <https://fraunhofer.mitsubishi/melco/TransportInfrastructure#prevPathSegment?> ;
+                                                                               rdfs:domain :PathSegment ;
+                                                                               rdfs:range :PathSegment .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#prevPathSegment?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#prevPathSegment?> rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#SGroup
+:SGroup rdf:type owl:DatatypeProperty ;
+        rdfs:domain :SignalGroup ;
+        rdfs:range xsd:int .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#allowDirection
+:allowDirection rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Lane ;
+                rdfs:range xsd:boolean ;
+                rdfs:comment "Direction allowed (yes) or not (no)" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#arrowDir
+:arrowDir rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Arrow ;
+          rdfs:range xsd:string .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#boundPos
+:boundPos rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Junction ;
+          rdfs:range xsd:float ;
+          rdfs:comment "bonderies of a junction (could be three points or four points)" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#brake
+:brake rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Engine ;
+       rdfs:range xsd:int ;
+       rdfs:comment "mechanical device that inhibits motion, is the force calculated to change the speed of the car" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#controlData.Timestamp
+:controlData.Timestamp rdf:type owl:DatatypeProperty ;
+                       rdfs:domain :ControlData ;
+                       rdfs:range xsd:dateTimeStamp .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#coordfront.x
+:coordfront.x rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :FrontPosition ;
+              rdfs:range xsd:float ;
+              rdfs:label "frX" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#coordfront.y
+:coordfront.y rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :FrontPosition ;
+              rdfs:range xsd:float ;
+              rdfs:label "frY" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#coordfront.z
+:coordfront.z rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :FrontPosition ;
+              rdfs:range xsd:float ;
+              rdfs:label "frZ" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#coordrear.x
+:coordrear.x rdf:type owl:DatatypeProperty ;
+             rdfs:domain :RearPosition ;
+             rdfs:range xsd:float ;
+             rdfs:label "reX" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#coordrear.y
+:coordrear.y rdf:type owl:DatatypeProperty ;
+             rdfs:domain :RearPosition ;
+             rdfs:range xsd:float ;
+             rdfs:label "reY" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#coordrear.z
+:coordrear.z rdf:type owl:DatatypeProperty ;
+             rdfs:domain :RearPosition ;
+             rdfs:range xsd:float ;
+             rdfs:label "reZ" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#dist
+:dist rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Waypoint ;
+      rdfs:range xsd:float .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#distanceBack
+:distanceBack rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Vehicle ;
+              rdfs:range xsd:float ;
+              rdfs:comment "The back distance between the car and obstacle, used also for parking" ;
+              rdfs:label "coordRear?" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#distanceFront
+:distanceFront rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Vehicle ;
+               rdfs:range xsd:float ;
+               rdfs:comment "The front distance between the car and obstacle" ;
+               rdfs:label "coordFront?" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#drivingDir
+:drivingDir rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Road ;
+            rdfs:range xsd:string .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#enterPos
+:enterPos rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Lane ;
+          rdfs:range xsd:float ;
+          rdfs:comment "an entry point of a lane" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#exitPos
+:exitPos rdf:type owl:DatatypeProperty ;
+         rdfs:subPropertyOf owl:topDataProperty ;
+         rdfs:domain :Lane ;
+         rdfs:range xsd:float ;
+         rdfs:comment "exit point of a lane" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#frontOverhang
+:frontOverhang rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Vehicle ;
+               rdfs:range xsd:int ;
+               rdfs:comment "front overhangs are the lengths of a road vehicle which extend beyond the wheelbase at the front" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#gear
+:gear rdf:type owl:DatatypeProperty ;
+      rdfs:subPropertyOf owl:topDataProperty ;
+      rdfs:domain :Vehicle ;
+      rdfs:range xsd:int ;
+      rdfs:comment "Gear value that changes the speed, torque, and direction of a power source." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasSignalPos
+:hasSignalPos rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Signal ;
+              rdfs:range xsd:float .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasSignalX
+:hasSignalX rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Signal ;
+            rdfs:range xsd:float .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasSignalY
+:hasSignalY rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Signal ;
+            rdfs:range xsd:float .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasSpeed
+:hasSpeed rdf:type owl:DatatypeProperty ;
+          rdfs:domain :SpeedProfile ;
+          rdfs:range xsd:float ;
+          rdfs:label "speed" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasValue
+:hasValue rdf:type owl:DatatypeProperty ;
+          rdfs:domain :ApproachingParameter ;
+          rdfs:range xsd:int ;
+          rdfs:label "linkPos" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasWaypointX
+:hasWaypointX rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Waypoint ;
+              rdfs:range xsd:float ;
+              rdfs:label "x" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#hasWaypointY
+:hasWaypointY rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Waypoint ;
+              rdfs:range xsd:float ;
+              rdfs:label "y" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#idArrow
+:idArrow rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Arrow ;
+         rdfs:range xsd:string .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#idCrossing
+:idCrossing rdf:type owl:DatatypeProperty ;
+            rdfs:domain :CrosswalkSegment ,
+                        :ZebraCrossing ;
+            rdfs:range xsd:int ;
+            rdfs:label "no" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#idLane
+:idLane rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Lane ;
+        rdfs:range xsd:int ;
+        rdfs:comment "Identification number of the Lane" ;
+        rdfs:label "Index" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#idObject
+:idObject rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :ObjectonRoad ;
+          rdfs:range xsd:int ;
+          rdfs:comment "Identification number of the Object" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#idObstacle
+:idObstacle rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Obstacle ;
+            rdfs:range xsd:int ;
+            rdfs:comment "Identification number of the Obstacle" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#idRoad
+:idRoad rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Road ;
+        rdfs:range xsd:int .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#idSignal
+:idSignal rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Signal ;
+          rdfs:range xsd:int .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#idTrafficSign
+:idTrafficSign rdf:type owl:DatatypeProperty ;
+               rdfs:subPropertyOf :idSignal ;
+               rdfs:domain :TrafficSign ;
+               rdfs:range xsd:int .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#idTrafficSignal
+:idTrafficSignal rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf :idSignal ;
+                 rdfs:domain :TrafficSignal ;
+                 rdfs:range xsd:int ;
+                 rdfs:comment "Identification number of the Traffic Signal" ;
+                 rdfs:label "signal_no" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#isEmpty
+:isEmpty rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Lane ;
+         rdfs:range xsd:boolean ;
+         rdfs:comment "Obstacles Or Objects are on Road (no) otherwise (yes)" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#laneChgFG
+:laneChgFG rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Lane ;
+           rdfs:range xsd:int ;
+           rdfs:comment "Lane change possible / impossible. 0: yes 1: no" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#laneType
+:laneType rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Lane ;
+          rdfs:range xsd:int ;
+          rdfs:comment "Lane type. 0: Straight lane 1: Left turn lane 2: Right turn lane" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#length
+:length rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Arrow ,
+                    :CrosswalkSegment ,
+                    :ZebraCrossing ;
+        rdfs:range :mm .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#nodePos
+:nodePos rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Node ;
+         rdfs:range xsd:float ;
+         rdfs:comment "represent the position of a node" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#pathSegmentID
+:pathSegmentID rdf:type owl:DatatypeProperty ;
+               rdfs:domain :PathSegment ;
+               rdfs:range xsd:int ;
+               rdfs:comment "index ID of a path segment" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#pos
+:pos rdf:type owl:DatatypeProperty ;
+     rdfs:domain :Position ;
+     rdfs:range xsd:float .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#poslat
+:poslat rdf:type owl:DatatypeProperty ;
+        rdfs:domain :LateralPosition ;
+        rdfs:range xsd:float .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#rearOverhang
+:rearOverhang rdf:type owl:DatatypeProperty ;
+              rdfs:subPropertyOf owl:topDataProperty ;
+              rdfs:domain :Vehicle ;
+              rdfs:range xsd:int ;
+              rdfs:comment "rear overhang are the lengths of a road vehicle which extend beyond the wheelbase at the rear." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#signal_col
+:signal_col rdf:type owl:DatatypeProperty ;
+            rdfs:domain :SignalState ;
+            rdfs:range xsd:string .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#signal_state
+:signal_state rdf:type owl:DatatypeProperty ;
+              rdfs:domain :SignalState ;
+              rdfs:range xsd:int ;
+              rdfs:comment "categories of color lights for traffic signal (0 for red and yellow, 1 for green and 2 for Unknown)" ;
+              rdfs:label "signal_state" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#spatioTemporalEvent.Timestamp
+:spatioTemporalEvent.Timestamp rdf:type owl:DatatypeProperty ;
+                               rdfs:domain :SpatioTemporalEvent ;
+                               rdfs:range xsd:dateTimeStamp .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#speedMax
+:speedMax rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf owl:topDataProperty ;
+          rdfs:domain :Lane ;
+          rdfs:range xsd:float ;
+          rdfs:comment "Legal speed allowed on particular lane." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#steerAngle
+:steerAngle rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Steering ;
+            rdfs:range xsd:float ;
+            rdfs:comment "The value of steering angle which is defined as the angle between the front of the vehicle and the steered wheel direction to change car direction" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#timeStamp
+:timeStamp rdf:type owl:DatatypeProperty ;
+           rdfs:domain :FrontPosition ,
+                       :Position ,
+                       :RearPosition ,
+                       :SignalState ,
+                       :SpeedProfile ;
+           rdfs:range xsd:dateTimeStamp .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#transportInfrastructureData.Timestamp
+:transportInfrastructureData.Timestamp rdf:type owl:DatatypeProperty ;
+                                       rdfs:domain :TransportInfrastructureData ;
+                                       rdfs:range xsd:dateTimeStamp .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#vehicleHeight
+:vehicleHeight rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Vehicle ;
+               rdfs:range :mm ;
+               rdfs:comment "is the distance between a flat, level surface, and the highest part of the car" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#vehicleID
+:vehicleID rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Vehicle ;
+           rdfs:range xsd:integer ;
+           rdfs:comment "is the identification number of the car" ;
+           rdfs:label "NO" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#vehicleLength
+:vehicleLength rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Vehicle ;
+               rdfs:range :mm ;
+               rdfs:comment "is the distance from the back to the front of the car" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#vehicleModel
+:vehicleModel rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Vehicle ;
+              rdfs:range xsd:string ;
+              rdfs:comment "describe the model of the car e.g. BMW X3" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#vehtype
+:vehtype rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Vehicle ;
+         rdfs:range xsd:int .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#weatherData.Timestamp
+:weatherData.Timestamp rdf:type owl:DatatypeProperty ;
+                       rdfs:domain :WeatherData ;
+                       rdfs:range xsd:dateTimeStamp .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#wheelBase
+:wheelBase rdf:type owl:DatatypeProperty ;
+           rdfs:domain :FrontWheel ;
+           rdfs:range :mm ;
+           rdfs:comment "the wheelbase is the distance between the centers of the front and rear wheels" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#x_at_pos
+:x_at_pos rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Signal ,
+                      :TurnPoint ;
+          rdfs:range xsd:float .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#y_at_pos
+:y_at_pos rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Signal ,
+                      :TurnPoint ;
+          rdfs:range xsd:float .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#altitude?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#altitude?> rdf:type owl:DatatypeProperty ;
+                                                                        rdfs:domain :TrafficSignal ;
+                                                                        rdfs:range xsd:float .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#angle?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#angle?> rdf:type owl:DatatypeProperty ;
+                                                                     rdfs:domain :TrafficSignal ;
+                                                                     rdfs:range xsd:float .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#latitude?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#latitude?> rdf:type owl:DatatypeProperty ;
+                                                                        rdfs:domain :TrafficSignal ;
+                                                                        rdfs:range xsd:float .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#longitude?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#longitude?> rdf:type owl:DatatypeProperty ;
+                                                                         rdfs:domain :TrafficSignal ;
+                                                                         rdfs:range xsd:float .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#road/linkSecID
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#road/linkSecID> rdf:type owl:DatatypeProperty ;
+                                                                             rdfs:domain :Lane ;
+                                                                             rdfs:range xsd:int ;
+                                                                             rdfs:comment "Road section ID. Road section ID 0 is used for sections inside the intersection. Adjacent lanes usually have the same section ID ." .
+
+
+###  https://fraunhofer.mitsubishi/melco/VehicleOnto#throttle?
+<https://fraunhofer.mitsubishi/melco/VehicleOnto#throttle?> rdf:type owl:DatatypeProperty ;
+                                                            rdfs:subPropertyOf owl:topDataProperty ;
+                                                            rdfs:domain :Engine ;
+                                                            rdfs:range xsd:int ;
+                                                            rdfs:comment "number of throttle body" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.w3.org/2006/time#Interval
+<http://www.w3.org/2006/time#Interval> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://www.w3.org/2006/time#TemporalEntity> .
+
+
+###  http://www.w3.org/2006/time#TemporalEntity
+<http://www.w3.org/2006/time#TemporalEntity> rdf:type owl:Class ;
+                                             rdfs:subClassOf <https://fraunhofer.mitsubishi/melco/TransportInfrastructure#TimeData?> .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Accelarate
+:Accelarate rdf:type owl:Class ;
+            rdfs:subClassOf :DrivingAction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Adult
+:Adult rdf:type owl:Class ;
+       rdfs:subClassOf :Pedestrian ;
+       rdfs:comment "An adult pedestrian moving around the cityscape." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Animal
+:Animal rdf:type owl:Class ;
+        rdfs:subClassOf :Obstacle ;
+        rdfs:comment "All animals, e.g. cats, rats, dogs, deer, birds." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#ApproachingParameter
+:ApproachingParameter rdf:type owl:Class ;
+                      rdfs:subClassOf :SpatioTemporalEventParameter ,
+                                      [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :hasValue ;
+                                                               owl:minQualifiedCardinality "5"^^xsd:nonNegativeInteger ;
+                                                               owl:onDataRange xsd:int
+                                                             ]
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :hasValue ;
+                                                               owl:maxQualifiedCardinality "50"^^xsd:nonNegativeInteger ;
+                                                               owl:onDataRange xsd:int
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#ArchitecturalStructure
+:ArchitecturalStructure rdf:type owl:Class ;
+                        rdfs:subClassOf :SurroundingObject ;
+                        rdfs:comment "Construction with stationary contact to the ground" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Arrow
+:Arrow rdf:type owl:Class ;
+       rdfs:subClassOf :RegulatorySurfaceSign .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Automobile
+:Automobile rdf:type owl:Class ;
+            rdfs:subClassOf :Vehicle ;
+            rdfs:comment "road vehicle powered by a motor" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#AutomobilePart
+:AutomobilePart rdf:type owl:Class ;
+                rdfs:subClassOf :VehiclePart ;
+                rdfs:comment "Refers to parts and devices installed in the car" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Barrier
+:Barrier rdf:type owl:Class ;
+         rdfs:subClassOf :Obstacle ;
+         rdfs:comment "Any metal, concrete or water barrier temporarily placed in the scene in order to re-direct vehicle or pedestrian traffic." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Bendy
+:Bendy rdf:type owl:Class ;
+       rdfs:subClassOf :Bus ;
+       rdfs:comment "Buses and shuttles designed to carry more than 10 people and comprises two or more rigid sections linked by a pivoting joint" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Bicycle
+:Bicycle rdf:type owl:Class ;
+         rdfs:subClassOf :Vehicle ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :vehtype ;
+                           owl:hasValue "600"^^xsd:int
+                         ] ;
+         rdfs:comment "Human or electric powered 2-wheeled vehicle designed to travel at lower speeds either on road surface, sidewalks or bicycle paths." ;
+         rdfs:label "Bike" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#BicycleRack
+:BicycleRack rdf:type owl:Class ;
+             rdfs:subClassOf :ObjectonRoad ;
+             rdfs:comment "Area or device intended to park or secure the bicycles in a row. It includes all the bicycles parked in it and any empty slots that are intended for parking bicycles" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#BikePath
+:BikePath rdf:type owl:Class ;
+          rdfs:subClassOf :OtherThoroughfare ;
+          rdfs:comment "A lane for bycicles. Might be a seperated lane or included into another road segment." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Brake
+:Brake rdf:type owl:Class ;
+       rdfs:subClassOf :DrivingAction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Building
+:Building rdf:type owl:Class ;
+          rdfs:subClassOf :Place ;
+          rdfs:comment "A place with a construction." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Bus
+:Bus rdf:type owl:Class ;
+     rdfs:subClassOf :Automobile ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :vehtype ;
+                       owl:hasValue "300"^^xsd:int
+                     ] ;
+     rdfs:comment "large road vehicle for transporting people" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#BusesOnlySign
+:BusesOnlySign rdf:type owl:Class ;
+               rdfs:subClassOf :MandatorySign .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Camera
+:Camera rdf:type owl:Class ;
+        rdfs:subClassOf :Sensor ;
+        rdfs:comment "optical device for recording/transmitting images or videos, used to detect obstacles" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Car
+:Car rdf:type owl:Class ;
+     rdfs:subClassOf :Automobile ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :vehtype ;
+                       owl:hasValue "100"^^xsd:int
+                     ] ;
+     rdfs:comment "Vehicle designed primarily for personal use, e.g. sedans, hatch-backs, wagons, vans, mini-vans, SUVs and jeeps." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Carriageway
+:Carriageway rdf:type owl:Class ;
+             rdfs:subClassOf :Road ;
+             rdfs:comment "A road without any planned obstacles." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Child
+:Child rdf:type owl:Class ;
+       rdfs:subClassOf :Pedestrian ;
+       rdfs:comment "A child pedestrian moving around the cityscape." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#CollisionWarning
+:CollisionWarning rdf:type owl:Class ;
+                  rdfs:subClassOf :Warning .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#ConstructionAgent
+:ConstructionAgent rdf:type owl:Class ;
+                   rdfs:subClassOf :Pedestrian ;
+                   rdfs:comment "A human in the scene whose main purpose is construction work." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#ConstructionCar
+:ConstructionCar rdf:type owl:Class ;
+                 rdfs:subClassOf :Automobile ;
+                 rdfs:comment "Vehicles primarily designed for construction. Typically very slow moving or stationary." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#ControlData
+:ControlData rdf:type owl:Class .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#CrosswalkSegment
+:CrosswalkSegment rdf:type owl:Class ;
+                  rdfs:subClassOf :RoadSegment ;
+                  rdfs:comment "Part of the road that pedestrians use for crossing it." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#CurrentLaneSafeDist
+:CurrentLaneSafeDist rdf:type owl:Class ;
+                     rdfs:subClassOf :RoadCondition .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#DashedLine
+:DashedLine rdf:type owl:Class ;
+            rdfs:subClassOf :RegulatorySurfaceSign ;
+            rdfs:comment "A dashed line to signal the right of ways." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Decelarate
+:Decelarate rdf:type owl:Class ;
+            rdfs:subClassOf :DrivingAction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#DirectionRoadSign
+:DirectionRoadSign rdf:type owl:Class ;
+                   rdfs:subClassOf :IndicationSign ;
+                   rdfs:comment "A traffic sign encoding different directions for navigation." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#DrivingAction
+:DrivingAction rdf:type owl:Class ;
+               rdfs:subClassOf :Motion .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#DualCarriageway
+:DualCarriageway rdf:type owl:Class ;
+                 rdfs:subClassOf :Carriageway ;
+                 rdfs:comment "A carriage way with multiple lanes per direction." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#EndLane
+:EndLane rdf:type owl:Class ;
+         rdfs:subClassOf :LaneSegment ;
+         rdfs:comment "start and end GPS positions of a path" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#EndNode
+:EndNode rdf:type owl:Class ;
+         rdfs:subClassOf :Node .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Engine
+:Engine rdf:type owl:Class ;
+        rdfs:subClassOf :AutomobilePart ;
+        rdfs:comment "machine designed to produce mechanical energy from another form of energy" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#FrontPosition
+:FrontPosition rdf:type owl:Class ;
+               rdfs:subClassOf :Position .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#FrontWheel
+:FrontWheel rdf:type owl:Class ;
+            rdfs:subClassOf :Wheel ;
+            rdfs:comment "The wheel in the front of the vehicle" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#GPS
+:GPS rdf:type owl:Class ;
+     rdfs:subClassOf :Sensor ;
+     rdfs:comment "Global Positioning System, is a satellite-based radionavigation system" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#GPSTrack
+:GPSTrack rdf:type owl:Class ;
+          rdfs:subClassOf :Path ;
+          rdfs:comment "tracking the vehicle movements and determine its location." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#GoBackward
+:GoBackward rdf:type owl:Class ;
+            rdfs:subClassOf :DrivingAction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#GoRoundabout
+:GoRoundabout rdf:type owl:Class ;
+              rdfs:subClassOf :DrivingAction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#GoStraight
+:GoStraight rdf:type owl:Class ;
+            rdfs:subClassOf :DrivingAction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Green
+:Green rdf:type owl:Class ;
+       rdfs:subClassOf :SignalState ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :signal_col ;
+                         owl:hasValue "green"^^xsd:string
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :signal_state ;
+                         owl:hasValue "1"^^xsd:int
+                       ] .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#GreenGo
+:GreenGo rdf:type owl:Class ;
+         rdfs:subClassOf :TrafficSignalControl .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Guardrail
+:Guardrail rdf:type owl:Class ;
+           rdfs:subClassOf :ObjectonRoad ;
+           rdfs:comment "Guardrails next to or within roads to prevent cars from leaving the track." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Highway
+:Highway rdf:type owl:Class ;
+         rdfs:subClassOf :RoadType ;
+         rdfs:comment "A road linked to a set of exceptions to general roads enabling higher travelling speeds." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Human
+:Human rdf:type owl:Class ;
+       rdfs:subClassOf :Obstacle ;
+       rdfs:comment "Any humanoid shaped Object." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#IndicationSign
+:IndicationSign rdf:type owl:Class ;
+                rdfs:subClassOf :RoadSign .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#InstructionSurfaceSign
+:InstructionSurfaceSign rdf:type owl:Class ;
+                        rdfs:subClassOf :RoadSurfaceMarking ;
+                        rdfs:comment "Any traffic sign instructing a certain driving behaviour." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Intersection
+:Intersection rdf:type owl:Class ;
+              rdfs:subClassOf :Junction ;
+              rdfs:comment "A junction with two roads directly crossing." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#IntersectionSegment
+:IntersectionSegment rdf:type owl:Class ;
+                     rdfs:subClassOf :PathSegment .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Junction
+:Junction rdf:type owl:Class ;
+          rdfs:subClassOf :RoadPart ;
+          rdfs:comment "Any possibility to switch roads." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Lane
+:Lane rdf:type owl:Class ;
+      rdfs:subClassOf :RoadPart ;
+      rdfs:comment "Is part of a roadway that is designated to be used by a single line of vehicles, to control and guide drivers and reduce traffic conflicts." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#LaneChange
+:LaneChange rdf:type owl:Class ;
+            rdfs:subClassOf :DrivingAction ;
+            rdfs:comment """For example, a lane change to the left is possible if the
+car which shall conduct the maneuver has a neighboring lane
+on the left and has no car on the positions beside and in front
+of it in the neighboring lane.""" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#LaneSegment
+:LaneSegment rdf:type owl:Class ;
+             rdfs:subClassOf :PathSegment .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#LateralPosition
+:LateralPosition rdf:type owl:Class ;
+                 rdfs:subClassOf :Position .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#LeftEdgeOfLane
+:LeftEdgeOfLane rdf:type owl:Class ;
+                rdfs:subClassOf :LateralPosition ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :poslat ;
+                                  owl:hasValue "1.0"^^xsd:float
+                                ] .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#LeftLaneChange
+:LeftLaneChange rdf:type owl:Class ;
+                rdfs:subClassOf :LaneChange .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#LeftSidewalk
+:LeftSidewalk rdf:type owl:Class ;
+              rdfs:subClassOf :Sidewalk ;
+              rdfs:comment "Sidewalk on the left side." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#LeftTurn
+:LeftTurn rdf:type owl:Class ;
+          rdfs:subClassOf :Turn .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Lidar
+:Lidar rdf:type owl:Class ;
+       rdfs:subClassOf :Sensor ;
+       rdfs:comment "A surveying method that measures distance to a target by illuminating the target with laser light and measuring the reflected light with a sensor." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Local-ExpressLane
+:Local-ExpressLane rdf:type owl:Class ;
+                   rdfs:subClassOf :Carriageway ;
+                   rdfs:comment "A carriageway intendet for fast driving. Might impose a usage restriction." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Man
+:Man rdf:type owl:Class ;
+     rdfs:subClassOf :Pedestrian ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :vehtype ;
+                       owl:hasValue "510"^^xsd:int
+                     ] .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#MandatorySign
+:MandatorySign rdf:type owl:Class ;
+               rdfs:subClassOf :RoadSign .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#MiddleOfLane
+:MiddleOfLane rdf:type owl:Class ;
+              rdfs:subClassOf :LateralPosition ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :poslat ;
+                                owl:hasValue "0.5"^^xsd:float
+                              ] .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Motion
+:Motion rdf:type owl:Class ;
+        rdfs:subClassOf :ControlData .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Motorcycle
+:Motorcycle rdf:type owl:Class ;
+            rdfs:subClassOf :Vehicle ;
+            rdfs:comment "Gasoline or electric powered 2-wheeled vehicle designed to move rapidly (at the speed of standard cars) on the road surface. This category includes all motorcycles, vespas and scooters." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#MyAutonomousCar
+:MyAutonomousCar rdf:type owl:Class ;
+                 rdfs:subClassOf :Automobile ;
+                 rdfs:comment "Refers to the self-driving car and all the information related to its state" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#MyAutonomousCarPart
+:MyAutonomousCarPart rdf:type owl:Class ;
+                     rdfs:subClassOf :AutomobilePart ;
+                     rdfs:comment "Refers to parts, devices and sensors installed in the self-driving car" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#NationalRoad
+:NationalRoad rdf:type owl:Class ;
+              rdfs:subClassOf :OrdinaryRoad ;
+              rdfs:comment "An ordinary road with significant importance. Might be linked to a set of exceptions from general driving rules." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Network
+:Network rdf:type owl:Class ;
+         rdfs:subClassOf :TransportInfrastructureData ;
+         rdfs:label "Network" ,
+                    "Transport Network" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Night
+:Night rdf:type owl:Class ;
+       rdfs:subClassOf :TimeofDay .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Node
+:Node rdf:type owl:Class ;
+      rdfs:subClassOf :PathDirection .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#ObjectonRoad
+:ObjectonRoad rdf:type owl:Class ;
+              rdfs:subClassOf :ArchitecturalStructure ;
+              rdfs:comment "Any construction whose geolocation is irrelevant for navigation." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Obstacle
+:Obstacle rdf:type owl:Class ;
+          rdfs:subClassOf :SurroundingObject ;
+          rdfs:comment "Any kind of Obstacle that has to be considered in the pathfinding process." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#OneWayLane
+:OneWayLane rdf:type owl:Class ;
+            rdfs:subClassOf :Lane ;
+            rdfs:comment "A lane which can only be used in one direction." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#OnlyLineForTurn
+:OnlyLineForTurn rdf:type owl:Class ;
+                 rdfs:subClassOf :InstructionSurfaceSign ;
+                 rdfs:comment "An instruction sign guiding turn possibilities." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#OrdinaryRoad
+:OrdinaryRoad rdf:type owl:Class ;
+              rdfs:subClassOf :RoadType ;
+              rdfs:comment "A road linked to a set of driving rules." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#OtherThoroughfare
+:OtherThoroughfare rdf:type owl:Class ;
+                   rdfs:subClassOf :TransportInfrastructureData ;
+                   rdfs:comment "A part of the Transportation Route having restrictions for certain vehicle types." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Path
+:Path rdf:type owl:Class ;
+      rdfs:subClassOf <https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Trajectory?> ;
+      rdfs:comment "A defined path for the vehicle. It is a set of connected lanes" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#PathDirection
+:PathDirection rdf:type owl:Class ;
+               rdfs:subClassOf :ControlData .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#PathSegment
+:PathSegment rdf:type owl:Class ;
+             rdfs:subClassOf :PathDirection .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Pedestrian
+:Pedestrian rdf:type owl:Class ;
+            rdfs:subClassOf :Human ;
+            rdfs:comment "A moving human." ;
+            rdfs:label "pedestrinan type: pedestrianTypes" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#PedestrianCrossing
+:PedestrianCrossing rdf:type owl:Class ;
+                    rdfs:subClassOf :RegulatorySurfaceSign .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Place
+:Place rdf:type owl:Class ;
+       rdfs:subClassOf :ArchitecturalStructure ;
+       rdfs:comment "Any geocoded Object that might be a target of Navigation." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#PoliceOfficer
+:PoliceOfficer rdf:type owl:Class ;
+               rdfs:subClassOf :Pedestrian ;
+               rdfs:comment "Any type of police officer, regardless whether directing the traffic or not." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Position
+:Position rdf:type owl:Class ;
+          rdfs:subClassOf :VehicleData ;
+          rdfs:label "POS" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#PrioritySign
+:PrioritySign rdf:type owl:Class ;
+              rdfs:subClassOf :RoadSign .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#RearPosition
+:RearPosition rdf:type owl:Class ;
+              rdfs:subClassOf :Position .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Red
+:Red rdf:type owl:Class ;
+     rdfs:subClassOf :SignalState ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :signal_col ;
+                       owl:hasValue "red"^^xsd:string
+                     ] ,
+                     [ rdf:type owl:Restriction ;
+                       owl:onProperty :signal_state ;
+                       owl:hasValue "0"^^xsd:int
+                     ] .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#RedStop
+:RedStop rdf:type owl:Class ;
+         rdfs:subClassOf :TrafficSignalControl .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#RegulatorySurfaceSign
+:RegulatorySurfaceSign rdf:type owl:Class ;
+                       rdfs:subClassOf :RoadSurfaceMarking ;
+                       rdfs:comment "Any traffic Sign limiting the driving within a lane." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#RightEdgeOfLane
+:RightEdgeOfLane rdf:type owl:Class ;
+                 rdfs:subClassOf :LateralPosition ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :poslat ;
+                                   owl:hasValue "0.0"^^xsd:float
+                                 ] .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#RightLaneChange
+:RightLaneChange rdf:type owl:Class ;
+                 rdfs:subClassOf :LaneChange .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#RightSidewalk
+:RightSidewalk rdf:type owl:Class ;
+               rdfs:subClassOf :Sidewalk ;
+               rdfs:comment "Sidewalk on the right side." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#RightTurn
+:RightTurn rdf:type owl:Class ;
+           rdfs:subClassOf :Turn .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Rigid
+:Rigid rdf:type owl:Class ;
+       rdfs:subClassOf :Bus ;
+       rdfs:comment "Rigid buses and shuttles designed to carry more than 10 people." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Road
+:Road rdf:type owl:Class ;
+      rdfs:subClassOf :TransportInfrastructureData ;
+      rdfs:comment "The collection of all streets and segments that need to be considered for navigation." ;
+      rdfs:label "Link" ,
+                 "Road" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#RoadCondition
+:RoadCondition rdf:type owl:Class ;
+               rdfs:subClassOf :ControlData .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#RoadPart
+:RoadPart rdf:type owl:Class ;
+          rdfs:subClassOf :Road ;
+          rdfs:comment "A specific part of the Road that serves a special function." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#RoadSegment
+:RoadSegment rdf:type owl:Class ;
+             rdfs:subClassOf :RoadPart ;
+             rdfs:comment "Parts of a Road serving a different purpose than for solemly driving on it." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#RoadSign
+:RoadSign rdf:type owl:Class ;
+          rdfs:subClassOf :TrafficSign ;
+          rdfs:comment "Any traffic sign positioned alongside of the road." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#RoadSurfaceMarking
+:RoadSurfaceMarking rdf:type owl:Class ;
+                    rdfs:subClassOf :TrafficSign ;
+                    rdfs:comment "A traffic sign painted on the road." ;
+                    rdfs:label "pavement marking information" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#RoadType
+:RoadType rdf:type owl:Class ;
+          rdfs:subClassOf :TransportInfrastructureData ;
+          rdfs:comment "A road serving a specific purpose and imposing restrictions on the usage." ,
+                       "Information about the path towards the goal that is currently being driven." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#RoadVerge
+:RoadVerge rdf:type owl:Class ;
+           rdfs:subClassOf :OtherThoroughfare ;
+           rdfs:comment "Side of the road, that might be considered to drive on." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Roundabout
+:Roundabout rdf:type owl:Class ;
+            rdfs:subClassOf :Junction ;
+            rdfs:comment "A junction where all roads are connected in an ordered circle." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Sensor
+:Sensor rdf:type owl:Class ;
+        rdfs:subClassOf :MyAutonomousCarPart ;
+        rdfs:comment "device that measures a physical quantity and converts it into a signal" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#SideCollisionWarning
+:SideCollisionWarning rdf:type owl:Class ;
+                      rdfs:subClassOf :CollisionWarning .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Sidewalk
+:Sidewalk rdf:type owl:Class ;
+          rdfs:subClassOf :OtherThoroughfare ;
+          rdfs:comment "Any utility along the road made for pedestrians to walk on." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Signal
+:Signal rdf:type owl:Class ;
+        rdfs:subClassOf :SignalInfo .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#SignalGroup
+:SignalGroup rdf:type owl:Class ;
+             rdfs:subClassOf :SignalInfo .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#SignalInfo
+:SignalInfo rdf:type owl:Class ;
+            rdfs:subClassOf :TransportInfrastructureData .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#SignalState
+:SignalState rdf:type owl:Class ;
+             rdfs:subClassOf :SignalInfo .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#SingleCarriageway
+:SingleCarriageway rdf:type owl:Class ;
+                   rdfs:subClassOf :Carriageway ;
+                   rdfs:comment "A carriageway with only one lane per direction." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Sonar
+:Sonar rdf:type owl:Class ;
+       rdfs:subClassOf :Sensor ;
+       rdfs:comment "A sensor that uses sound propagation to navigate, communicate with or detect objects on or such as other vehicals." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#SpatioTemporalEvent
+:SpatioTemporalEvent rdf:type owl:Class ;
+                     rdfs:subClassOf :ControlData .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#SpatioTemporalEventAction
+:SpatioTemporalEventAction rdf:type owl:Class ;
+                           rdfs:subClassOf :SpatioTemporalEvent .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#SpatioTemporalEventParameter
+:SpatioTemporalEventParameter rdf:type owl:Class ;
+                              rdfs:subClassOf :SpatioTemporalEvent .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#SpeedLimit
+:SpeedLimit rdf:type owl:Class ;
+            rdfs:subClassOf :TransportInfrastructureData ;
+            rdfs:comment "Any speedlimit defined by traffic signs or legal rules." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#SpeedLimitSign
+:SpeedLimitSign rdf:type owl:Class ;
+                rdfs:subClassOf :RoadSign .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#SpeedProfile
+:SpeedProfile rdf:type owl:Class ;
+              rdfs:subClassOf <https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Trajectory?> ;
+              rdfs:comment "speed profile is defined by its speed along its trajectory and is determined by projecting its observed speed from the same predetermined stations along the horizontal curve" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#StartLane
+:StartLane rdf:type owl:Class ;
+           rdfs:subClassOf :LaneSegment ;
+           rdfs:comment "start and end GPS positions of a path" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#StartNode
+:StartNode rdf:type owl:Class ;
+           rdfs:subClassOf :Node .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Steering
+:Steering rdf:type owl:Class ;
+          rdfs:subClassOf :AutomobilePart ;
+          rdfs:comment "Type of steering control in vehicles" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Stop
+:Stop rdf:type owl:Class ;
+      rdfs:subClassOf :DrivingAction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#StopSign
+:StopSign rdf:type owl:Class ;
+          rdfs:subClassOf :PrioritySign .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Stopline
+:Stopline rdf:type owl:Class ;
+          rdfs:subClassOf :RegulatorySurfaceSign ;
+          rdfs:comment "A line where a car has to be stopped." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#StoppingParameter
+:StoppingParameter rdf:type owl:Class ;
+                   rdfs:subClassOf :SpatioTemporalEventParameter ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :hasValue ;
+                                     owl:someValuesFrom xsd:int
+                                   ] .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#SurroundingObject
+:SurroundingObject rdf:type owl:Class ;
+                   rdfs:subClassOf :TransportInfrastructureData .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#TimeofDay
+:TimeofDay rdf:type owl:Class ;
+           rdfs:subClassOf <http://www.w3.org/2006/time#Interval> .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#TrafficConflict
+:TrafficConflict rdf:type owl:Class ;
+                 rdfs:subClassOf :TransportInfrastructureData ;
+                 rdfs:comment "A traffic conflict, is \"an observable event which would end in an accident unless one of the involved parties slows down, changes lanes, or accelerates to avoid collision" ;
+                 rdfs:label "ConflictArea" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#TrafficSign
+:TrafficSign rdf:type owl:Class ;
+             rdfs:subClassOf :Signal ;
+             rdfs:comment "Traffic signs identified from sensor input." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#TrafficSignal
+:TrafficSignal rdf:type owl:Class ;
+               rdfs:subClassOf :Signal ;
+               rdfs:comment "Any traffic signal with the ability to change its status." ;
+               rdfs:label "signals3D" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#TrafficSignalControl
+:TrafficSignalControl rdf:type owl:Class ;
+                      rdfs:subClassOf :ControlData .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Trailer
+:Trailer rdf:type owl:Class ;
+         rdfs:subClassOf :Vehicle ;
+         rdfs:comment "Any vehicle trailer, both for trucks, cars and motorcycles (regardless of whether currently being towed or not)." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Train
+:Train rdf:type owl:Class ;
+       rdfs:subClassOf :Vehicle ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :vehtype ;
+                         owl:hasValue "400"^^xsd:int
+                       ] .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#TransportInfrastructureData
+:TransportInfrastructureData rdf:type owl:Class .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Tree
+:Tree rdf:type owl:Class ;
+      rdfs:subClassOf :ObjectonRoad ;
+      rdfs:comment "Any plant with considerable height that cannot be run over." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Truck
+:Truck rdf:type owl:Class ;
+       rdfs:subClassOf :Automobile ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :vehtype ;
+                         owl:hasValue "200"^^xsd:int
+                       ] ;
+       rdfs:comment "Vehicles primarily designed to haul cargo including pick-ups, lorrys, trucks and semi-tractors." ;
+       rdfs:label "HGV" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Turn
+:Turn rdf:type owl:Class ;
+      rdfs:subClassOf :Junction ;
+      rdfs:comment "A junction with the possibilty to move to a different non intersecting road." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#TurnEntryPoint
+:TurnEntryPoint rdf:type owl:Class ;
+                rdfs:subClassOf :TurnPoint .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#TurnExitPoint
+:TurnExitPoint rdf:type owl:Class ;
+               rdfs:subClassOf :TurnPoint .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#TurnLeft
+:TurnLeft rdf:type owl:Class ;
+          rdfs:subClassOf :DrivingAction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#TurnOff
+:TurnOff rdf:type owl:Class ;
+         rdfs:subClassOf :DrivingAction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#TurnOn
+:TurnOn rdf:type owl:Class ;
+        rdfs:subClassOf :DrivingAction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#TurnPoint
+:TurnPoint rdf:type owl:Class ;
+           rdfs:subClassOf :RoadPart .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#TurnRight
+:TurnRight rdf:type owl:Class ;
+           rdfs:subClassOf :DrivingAction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#TwoWayLane
+:TwoWayLane rdf:type owl:Class ;
+            rdfs:subClassOf :Lane ;
+            rdfs:comment "A lane which can only be used in both directions i.e. vehicles travelling in opposite directions must slow or stop to pass each other." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#UnknowStop
+:UnknowStop rdf:type owl:Class ;
+            rdfs:subClassOf :TrafficSignalControl .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Unknown
+:Unknown rdf:type owl:Class ;
+         rdfs:subClassOf :SignalState ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :signal_state ;
+                           owl:hasValue "2"^^xsd:int
+                         ] ;
+         rdfs:comment "Any not assignable light color, f.e for defect Traffic Lights." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#UtilityPole
+:UtilityPole rdf:type owl:Class ;
+             rdfs:subClassOf :ObjectonRoad ;
+             rdfs:comment "Stationary or relocatable poles that serve infrastructure and cannot be run over." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Van
+:Van rdf:type owl:Class ;
+     rdfs:subClassOf :Automobile ;
+     rdfs:comment "covered transportation vehicle e.g. emergency vehicle" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Vehicle
+:Vehicle rdf:type owl:Class ;
+         rdfs:subClassOf :Obstacle ;
+         rdfs:comment "mobile machine" ;
+         rdfs:label "vehicle information : models2D3D" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#VehicleData
+:VehicleData rdf:type owl:Class .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#VehiclePart
+:VehiclePart rdf:type owl:Class ;
+             rdfs:subClassOf :VehicleData ;
+             rdfs:comment "Refers to all parts needed to make a mobile machine" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Warning
+:Warning rdf:type owl:Class ;
+         rdfs:subClassOf :ControlData .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Waypoint
+:Waypoint rdf:type owl:Class ;
+          rdfs:subClassOf :RoadPart .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Weather
+:Weather rdf:type owl:Class ;
+         rdfs:subClassOf :WeatherData .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#WeatherData
+:WeatherData rdf:type owl:Class .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Wheel
+:Wheel rdf:type owl:Class ;
+       rdfs:subClassOf :AutomobilePart ;
+       rdfs:comment "round object on a car allowing vechicle to move" .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Wind
+:Wind rdf:type owl:Class ;
+      rdfs:subClassOf :Weather .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Woman
+:Woman rdf:type owl:Class ;
+       rdfs:subClassOf :Pedestrian ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :vehtype ;
+                         owl:hasValue "520"^^xsd:int
+                       ] .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Yellow
+:Yellow rdf:type owl:Class ;
+        rdfs:subClassOf :SignalState ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :signal_col ;
+                          owl:hasValue "yellow"^^xsd:string
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :signal_state ;
+                          owl:hasValue "0"^^xsd:int
+                        ] .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#YellowStop
+:YellowStop rdf:type owl:Class ;
+            rdfs:subClassOf :TrafficSignalControl .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#ZebraCrossing
+:ZebraCrossing rdf:type owl:Class ;
+               rdfs:subClassOf :PedestrianCrossing .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Approaching?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Approaching?> rdf:type owl:Class ;
+                                                                           rdfs:subClassOf :SpatioTemporalEventAction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Braking?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Braking?> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf :SpatioTemporalEventAction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#CenterLine(dtLane)
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#CenterLine(dtLane)> rdf:type owl:Class ;
+                                                                                 rdfs:subClassOf :RoadPart .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Cut_in?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Cut_in?> rdf:type owl:Class ;
+                                                                      rdfs:subClassOf :SpatioTemporalEventAction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Cut_out?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Cut_out?> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf :SpatioTemporalEventAction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Debris?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Debris?> rdf:type owl:Class ;
+                                                                      rdfs:subClassOf :Obstacle ;
+                                                                      rdfs:comment "Debris or movable object that is too large to be driven over safely." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Following?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Following?> rdf:type owl:Class ;
+                                                                         rdfs:subClassOf :SpatioTemporalEventAction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Leaving?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Leaving?> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf :SpatioTemporalEventAction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#OppsiteLane_(to_check)?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#OppsiteLane_(to_check)?> rdf:type owl:Class ;
+                                                                                      rdfs:subClassOf :Lane .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Personalm?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Personalm?> rdf:type owl:Class ;
+                                                                         rdfs:subClassOf :Pedestrian ;
+                                                                         rdfs:comment "A small electric or self-propelled vehicle, e.g. skateboard, segway, or scooters, on which the person typically travels in a upright position." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#PushablePul?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#PushablePul?> rdf:type owl:Class ;
+                                                                           rdfs:subClassOf :ObjectonRoad ;
+                                                                           rdfs:comment "Objects that a pedestrian may push or pull. For example dolleys, wheel barrows, garbage-bins with wheels, or shopping carts." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Starting?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Starting?> rdf:type owl:Class ;
+                                                                        rdfs:subClassOf :SpatioTemporalEventAction .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#TimeData?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#TimeData?> rdf:type owl:Class .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#TrafficCone?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#TrafficCone?> rdf:type owl:Class ;
+                                                                           rdfs:subClassOf :Obstacle ;
+                                                                           rdfs:comment "All types of traffic cones." .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Trajectory?
+<https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Trajectory?> rdf:type owl:Class ;
+                                                                          rdfs:subClassOf :VehicleData ;
+                                                                          rdfs:comment "A vehicle trajectory is the defined path a vehicle takes through a horizontal curve and is determined by projecting its known lateral position in the lane from predetermined stations" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#Abderrahmane_Khiat
+:Abderrahmane_Khiat rdf:type owl:NamedIndividual .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#BMW_X6
+:BMW_X6 rdf:type owl:NamedIndividual ,
+                 :Vehicle .
+
+
+###  https://fraunhofer.mitsubishi/melco/TransportInfrastructure#MitsubishiAuto
+:MitsubishiAuto rdf:type owl:NamedIndividual ,
+                         :Vehicle .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+:v rdf:type <http://www.w3.org/2003/11/swrl#Variable> .
+
+[ <http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled> "true"^^xsd:boolean ;
+   rdfs:comment ""^^xsd:string ;
+   rdfs:label "S1"^^xsd:string ;
+   rdf:type <http://www.w3.org/2003/11/swrl#Imp> ;
+   <http://www.w3.org/2003/11/swrl#body> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Vehicle ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :v
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ] ;
+   <http://www.w3.org/2003/11/swrl#head> [ rdf:type <http://www.w3.org/2003/11/swrl#AtomList> ;
+                                           rdf:first [ rdf:type <http://www.w3.org/2003/11/swrl#ClassAtom> ;
+                                                       <http://www.w3.org/2003/11/swrl#classPredicate> :Stop ;
+                                                       <http://www.w3.org/2003/11/swrl#argument1> :v
+                                                     ] ;
+                                           rdf:rest rdf:nil
+                                         ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

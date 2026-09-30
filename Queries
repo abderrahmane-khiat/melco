@@ -1,0 +1,65 @@
+ 
+PREFIX melco: <https://fraunhofer.mitsubishi/melco/TransportInfrastructure#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?road ?lane WHERE {  ?vehicle melco:vehicleID "30"^^xsd:int.
+                            ?vehicle melco:hasPos ?pos.
+                            ?pos melco:timestamp "58.0"^^xsd:float. 
+                            ?pos melco:isOnRoad ?road.
+                            ?pos melco:isOnLane ?lane.
+}
+
+
+PREFIX melco: <https://fraunhofer.mitsubishi/melco/TransportInfrastructure#>
+SELECT ?road ?lane WHERE { melco:Position30-58.0 melco:isOnRoad ?road.
+  					       melco:Position30-58.0 melco:isOnLane ?lane.
+}
+
+
+
+PREFIX melco: <https://fraunhofer.mitsubishi/melco/TransportInfrastructure#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?signal ?color ?class WHERE { 
+  						melco:Position30-62.0 melco:isOnRoad ?road.
+  						?signal melco:isLocatedOn ?road.  
+  					    ?signal a ?class.
+  		OPTIONAL { ?signalstate melco:isSignalStateOf ?signal .
+  				   ?signalstate melco:signal_col ?color.
+    			   ?signalstate melco:timestamp "62.0"^^xsd:float
+    			
+  				 }
+}
+
+
+
+
+PREFIX melco: <https://fraunhofer.mitsubishi/melco/TransportInfrastructure#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?vehicle ?speed WHERE { 
+  						  { ?vehicle melco:vehicleID "30"^^xsd:int. } UNION
+						  {  ?vehicle melco:vehicleID "28"^^xsd:int. }
+                            ?vehicle melco:hasSpeedProfile ?speedprofile.
+  							?speedprofile melco:timestamp "80.0"^^xsd:float.
+  							?speedprofile melco:hasSpeed ?speed  						
+	}
+
+	
+	
+PREFIX melco: <https://fraunhofer.mitsubishi/melco/TransportInfrastructure#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT DISTINCT ?vehicle ?road WHERE { 
+  						   ?vehicle melco:vehicleID "30"^^xsd:int.
+                           ?vehicle melco:hasPos ?pos.
+                           ?pos melco:timestamp ?time.
+  						   ?pos melco:isOnRoad ?road.
+ 						   FILTER ( 55.0 < ?time && ?time < 85.0)
+} 
+
+PREFIX melco: <https://fraunhofer.mitsubishi/melco/TransportInfrastructure#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?turnpoint ?x2 ?y2 WHERE { 
+  						   melco:TurnPointExit10012 melco:x_at_pos ?x1.
+  						   melco:TurnPointExit10012 melco:y_at_pos ?y1.
+  						   ?turnpoint a melco:TurnPoint.
+    					   ?turnpoint melco:x_at_pos ?x2.
+  						   ?turnpoint melco:y_at_pos ?y2.
+} ORDER BY DESC ((-(?x1-?x2)*(?x1-?x2))-((?y1-?y2)*(?y1-?y2))) LIMIT 1
